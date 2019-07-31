@@ -1,0 +1,53 @@
+<div class="container signup" ng-controller="MyInfoController as $ctrl">
+
+  <span ng-show="!$ctrl.isSignedUp()">Not Signed Up Yet.
+  <a ui-sref="public.signup">Sign up Now!</a>
+  </span>
+
+  <fieldset ng-show="$ctrl.isSignedUp()">
+    <h2>You are signed up for our newsletter</h2>
+
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <label class="control-label col-lg-2 col-md-2 col-sm-3 hidden-xs">Full Name:
+      </label>
+      <label class="control-label hidden-lg hidden-md hidden-sm col-xs-2">Name:
+      </label>
+      <span
+          class="col-lg-10 col-md-10 col-sm-9 col-xs-8
+                    col-xxs-12">{{$ctrl.data.firstName}} {{$ctrl.data.lastName}}
+        </span>
+    </div>
+
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <label class="control-label col-lg-2 col-md-2 col-sm-3 col-xs-2">Email:
+      </label>
+      <span
+          class="col-lg-10 col-md-10 col-sm-9 col-xs-8 col-xxs-12">{{$ctrl.data.email}}
+        </span>
+    </div>
+
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <label class="control-label col-lg-2 col-md-2 col-sm-3 hidden-xs ">Tel. Number:
+      </label>
+      <label class="control-label hidden-lg hidden-md hidden-sm col-xs-2">Tel.:
+      </label>
+      <span
+          class="col-lg-10 col-md-10 col-sm-9 col-xs-8
+                    col-xxs-12"> {{$ctrl.data.tel.number}}
+        </span>
+    </div>
+
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <label class="control-label col-lg-2 col-md-2 col-sm-3 hidden-xs">Favorite Dish:
+      </label>
+      <label class="control-label hidden-lg hidden-md hidden-sm col-xs-2">Dish:
+      </label>
+      <span
+          class="col-lg-10 col-md-10 col-sm-9 col-xs-10">{{$ctrl.data.favoriteDish}}
+        </span>
+    </div>
+  </fieldset>
+
+  <br>
+  <menu-item ng-show="!!$ctrl.data.favoriteDish" menu-item="$ctrl.data.dish"></menu-item>
+</div>

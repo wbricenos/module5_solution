@@ -1,0 +1,131 @@
+<div class="container" ng-controller="SignUpController as ctrl">
+  <div class="col-xs-12 col-sm-12">
+    <form class="form-horizontal " role="form" name="signupForm" ng-submit="ctrl.signUp()" novalidate>
+      <fieldset>
+        <h3>Sign up for our newsletter</h3>
+
+        <div class="form-group">
+          <label for="firstname"
+              class="col-lg-3 col-md-3 col-sm-3 hidden-xs control-label">First Name:
+          </label>
+          <div
+              class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+            <input type="text" class="form-control" id="firstname" name="firstname" placeholder="First Name"
+                   pattern="^[a-zA-Z]+$" ng-model="ctrl.data.firstName" required>
+          </div>
+        </div>
+
+        <div class="col-lg-offset-3 col-md-offset-3 col-sm-offset-3">
+
+          <div class="help-block"
+               ng-show="signupForm.firstname.$invalid && !signupForm.firstname.$pristine">
+            <span class="glyphicon glyphicon-remove"></span>
+            <span>First name is required and must be alphabetical value.</span>
+          </div>
+        </div>
+
+
+        <div class="form-group">
+          <label for="lastname"
+             class="col-lg-3 col-md-3 col-sm-3 hidden-xs control-label">Last Name:
+          </label>
+          <div
+              class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+            <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Last Name"
+              pattern="^[a-zA-Z]+$" ng-model="ctrl.data.lastName" required>
+          </div>
+        </div>
+
+        <div class="col-lg-offset-3 col-md-offset-3 col-sm-offset-3">
+
+          <div class="help-block"
+               ng-show="signupForm.lastname.$invalid && !signupForm.lastname.$pristine">
+            <span class="glyphicon glyphicon-remove"></span>
+            <span>Last name is required and must be alphabetical value.</span>
+          </div>
+        </div>
+
+
+        <div class="form-group">
+          <label for="email"
+                 class="col-lg-3 col-md-3 col-sm-3 hidden-xs control-label">Email:
+          </label>
+          <div
+              class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+            <input type="email" class="form-control" id="email" name="email" placeholder="Email e.g. asd@gmail.com"
+                   ng-model="ctrl.data.email" required>e.g. asd@gmail.com
+          </div>
+        </div>
+
+        <div class="col-lg-offset-3 col-md-offset-3 col-sm-offset-3">
+
+          <div class="help-block"
+               ng-show="signupForm.email.$invalid && !signupForm.email.$pristine && !ctrl.isSignedUp">
+            <span class="glyphicon glyphicon-remove"></span>
+            <span ng-show="signupForm.email.$error.required">Email address is required.</span>
+            <span ng-show="!signupForm.email.$error.required">Enter a valid email address.</span>
+          </div>
+        </div>
+
+
+        <div class="form-group">
+          <label for="areacode"
+                 class="col-lg-3 col-md-3 col-sm-3 hidden-xs control-label">Tel. Number:
+          </label>
+          <div class="col-lg-6 col-md-6 col-sm-5 col-xs-7">
+                <input type="tel" class="form-control" id="telnum" name="telnum" ng-model="ctrl.data.tel.number"
+                       placeholder="Tel. Number e.g. 123-1234" pattern="\d{3}-\d{4}" maxlength="8" required>e.g. 123-1234
+          </div>
+        </div>
+
+        <div class="col-lg-offset-5 col-md-offset-5 col-sm-offset-5">
+          <div class="help-block"
+               ng-show="signupForm.telnum.$invalid && !signupForm.telnum.$pristine && !ctrl.isSignedUp">
+            <span class="glyphicon glyphicon-remove"></span>
+            <span ng-show="signupForm.telnum.$error.required">Email address is required.</span>
+            <span ng-show="!signupForm.telnum.$error.required">phone number are required in format 123-1234</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="favoritedish"
+                 class="col-lg-3 col-md-3 col-sm-3 hidden-xs control-label">Favorite Dish:
+          </label>
+          <div
+              class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <input type="text" class="form-control" id="favoritedish" name="favoritedish"
+                   ng-model="ctrl.data.favoriteDish" placeholder="Favorite Dish e.g. A1 or A2 etc."
+                   pattern="^[a-zA-Z]{1,2}\d{1,2}$" maxlength="4" required>e.g. A1 or A2 etc.
+
+                   <div class="help-block"
+                        ng-show="signupForm.favoritedish.$invalid && !signupForm.favoritedish.$pristine && !ctrl.isSignedUp">
+                     <span class="glyphicon glyphicon-remove"></span>
+                     <span ng-show="signupForm.favoritedish.$error.required">FavoriteDish required.</span>
+                     <span ng-show="!signupForm.favoritedish.$error.required">No such menu number exists.</span>
+                   </div>
+          </div>
+        </div>
+      </fieldset>
+
+      <div class="form-group">
+        <div class="
+            col-sm-offset-3
+            col-sm-9">
+          <button type="submit"
+                  class="btn btn-primary"
+                  ng-disabled="signupForm.$invalid">Sign Up
+          </button>
+        </div>
+      </div>
+
+      <div class="col-lg-offset-3 col-md-offset-3 col-sm-offset-3">
+
+        <div class="help-block message" ng-show="ctrl.isChecked">
+          <span ng-show="ctrl.isSignedUp" class="glyphicon glyphicon-ok"></span>
+          <span ng-show="!ctrl.isSignedUp" class="glyphicon glyphicon-remove"></span>
+          <span>{{ctrl.data.message}}</span>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
